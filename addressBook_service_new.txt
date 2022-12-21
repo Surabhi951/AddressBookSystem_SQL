@@ -112,3 +112,56 @@ mysql> select * from addressbook where city = 'pune' or state = 'maharashtra';
 | sheetal   | adagale  | pimpri  | pune | maharashtra |  411025 | 7845213659  | sheetal@gmail.com |
 +-----------+----------+---------+------+-------------+---------+-------------+-------------------+
 2 rows in set (0.00 sec)
+
+UC7-Size of address book by city and state
+
+mysql> insert into addressbook(firstName,lastName,address,city,state,zipCode,phoneNumber,email)values('sakshi', 'bhagat', 'kumbrepark', 'pune', 'maharashtra', 411025, 9857412368, 'sakshi@gmail.com'),('chetan','shinde','nagar','bhopal','madhyapradesh',123456,7845938923,'chetu32@gmail.com');
+Query OK, 2 rows affected (1.33 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+| firstName | lastName | address    | city   | state         | zipCode | phoneNumber | email             |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+| surabhi   | bhagat   | kothrud    | pune   | maharashtra   |  411026 | 8957463215  | sur12@gmail.com   |
+| sheetal   | adagale  | pimpri     | pune   | maharashtra   |  411025 | 7845213659  | sheetal@gmail.com |
+| sakshi    | bhagat   | kumbrepark | pune   | maharashtra   |  411025 | 9857412368  | sakshi@gmail.com  |
+| chetan    | shinde   | nagar      | bhopal | madhyapradesh |  123456 | 7845938923  | chetu32@gmail.com |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+4 rows in set (0.04 sec)
+
+mysql> update addressbook set city = 'nanded' where firstName = 'sheetal';
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+| firstName | lastName | address    | city   | state         | zipCode | phoneNumber | email             |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+| surabhi   | bhagat   | kothrud    | pune   | maharashtra   |  411026 | 8957463215  | sur12@gmail.com   |
+| sheetal   | adagale  | pimpri     | nanded | maharashtra   |  411025 | 7845213659  | sheetal@gmail.com |
+| sakshi    | bhagat   | kumbrepark | pune   | maharashtra   |  411025 | 9857412368  | sakshi@gmail.com  |
+| chetan    | shinde   | nagar      | bhopal | madhyapradesh |  123456 | 7845938923  | chetu32@gmail.com |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(city) from addressbook where city = 'pune';
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(state) from addressbook where state = 'maharashtra';
++--------------+
+| count(state) |
++--------------+
+|            3 |
++--------------+
+1 row in set (0.00 sec)
+
+
+
+
+
