@@ -172,5 +172,50 @@ mysql> select * from addressbook where city = 'pune' order by firstName;
 +-----------+----------+------------+------+-------------+---------+-------------+------------------+
 2 rows in set (0.17 sec)
 
+UC9-Identify each address book with name and type
+
+mysql> alter table addressbook add column addressbook_name varchar(20), add column addressbook_type varchar(25);
+Query OK, 0 rows affected (3.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+| firstName | lastName | address    | city   | state         | zipCode | phoneNumber | email             | addressbook_name | addressbook_type |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+| surabhi   | bhagat   | kothrud    | pune   | maharashtra   |  411026 | 8957463215  | sur12@gmail.com   | NULL             | NULL             |
+| sheetal   | adagale  | pimpri     | nanded | maharashtra   |  411025 | 7845213659  | sheetal@gmail.com | NULL             | NULL             |
+| sakshi    | bhagat   | kumbrepark | pune   | maharashtra   |  411025 | 9857412368  | sakshi@gmail.com  | NULL             | NULL             |
+| chetan    | shinde   | nagar      | bhopal | madhyapradesh |  123456 | 7845938923  | chetu32@gmail.com | NULL             | NULL             |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> update addressbook set addressbook_name = 'book1', addressbook_type = 'family' where firstName = 'surabhi';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set addressbook_name = 'book2', addressbook_type = 'friends' where firstName = 'sheetal';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set addressbook_name = 'book1', addressbook_type = 'family' where firstName = 'sakshi';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set addressbook_name = 'book3', addressbook_type = 'profession' where firstName = 'chetan';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+| firstName | lastName | address    | city   | state         | zipCode | phoneNumber | email             | addressbook_name | addressbook_type |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+| surabhi   | bhagat   | kothrud    | pune   | maharashtra   |  411026 | 8957463215  | sur12@gmail.com   | book1            | family           |
+| sheetal   | adagale  | pimpri     | nanded | maharashtra   |  411025 | 7845213659  | sheetal@gmail.com | book2            | friends          |
+| sakshi    | bhagat   | kumbrepark | pune   | maharashtra   |  411025 | 9857412368  | sakshi@gmail.com  | book1            | family           |
+| chetan    | shinde   | nagar      | bhopal | madhyapradesh |  123456 | 7845938923  | chetu32@gmail.com | book3            | profession       |
++-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
+4 rows in set (0.00 sec)
+
+
 
 
