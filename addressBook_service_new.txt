@@ -216,6 +216,17 @@ mysql> select * from addressbook;
 +-----------+----------+------------+--------+---------------+---------+-------------+-------------------+------------------+------------------+
 4 rows in set (0.00 sec)
 
+UC10-Get number of contact persons i.e. count by type
+
+mysql> select addressbook_type, count(*) from addressbook group by addressbook_type;
++------------------+----------+
+| addressbook_type | count(*) |
++------------------+----------+
+| family           |        2 |
+| friends          |        1 |
+| profession       |        1 |
++------------------+----------+
+3 rows in set (0.19 sec)
 
 
 
