@@ -228,5 +228,74 @@ mysql> select addressbook_type, count(*) from addressbook group by addressbook_t
 +------------------+----------+
 3 rows in set (0.19 sec)
 
+UC11-Add person to both friend and family
+
+mysql> create table family(id int not null auto_increment, firstName varchar(25), lastName varchar(25), address varchar(50), city varchar(20), state varchar(25), zipCode int not null, phonenumber varchar(250), email varchar(100), addressbook_name varchar(20), addressbook_type varchar(20), primary key(id), foreign key(id) references addressbook(id));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> desc family;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | int          | NO   | PRI | NULL    | auto_increment |
+| firstName        | varchar(25)  | YES  |     | NULL    |                |
+| lastName         | varchar(25)  | YES  |     | NULL    |                |
+| address          | varchar(50)  | YES  |     | NULL    |                |
+| city             | varchar(20)  | YES  |     | NULL    |                |
+| state            | varchar(25)  | YES  |     | NULL    |                |
+| zipCode          | int          | NO   |     | NULL    |                |
+| phonenumber      | varchar(250) | YES  |     | NULL    |                |
+| email            | varchar(100) | YES  |     | NULL    |                |
+| addressbook_name | varchar(20)  | YES  |     | NULL    |                |
+| addressbook_type | varchar(20)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+11 rows in set (0.46 sec)
+
+mysql> insert into family select * from addressbook where addressbook_type="family";
+Query OK, 2 rows affected (0.22 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from family;
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+| id | firstName | lastName | address    | city | state       | zipCode | phonenumber | email            | addressbook_name | addressbook_type |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+|  1 | surabhi   | bhagat   | kothrud    | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com  | book1            | family           |
+|  3 | sakshi    | bhagat   | kumbrepark | pune | maharashtra |  411025 | 9857412368  | sakshi@gmail.com | book1            | family           |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table friends(id int auto_increment, firstName varchar(25), lastName varchar(25), address varchar(50), city varchar(20),state varchar(25), zipCode int not null, phoneNumber varchar(250), email varchar(100),addressbook_name varchar(20), addressbook_type varchar(20),primary key(id),foreign key (id) references addressbook(id));
+Query OK, 0 rows affected (0.40 sec)
+
+mysql> desc friends;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | int          | NO   | PRI | NULL    | auto_increment |
+| firstName        | varchar(25)  | YES  |     | NULL    |                |
+| lastName         | varchar(25)  | YES  |     | NULL    |                |
+| address          | varchar(50)  | YES  |     | NULL    |                |
+| city             | varchar(20)  | YES  |     | NULL    |                |
+| state            | varchar(25)  | YES  |     | NULL    |                |
+| zipCode          | int          | NO   |     | NULL    |                |
+| phoneNumber      | varchar(250) | YES  |     | NULL    |                |
+| email            | varchar(100) | YES  |     | NULL    |                |
+| addressbook_name | varchar(20)  | YES  |     | NULL    |                |
+| addressbook_type | varchar(20)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+11 rows in set (0.03 sec)
+
+mysql> insert into friends select * from addressbook where addressbook_type="friends";
+Query OK, 1 row affected (0.22 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from friends;
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+| id | firstName | lastName | address | city   | state       | zipCode | phoneNumber | email             | addressbook_name | addressbook_type |
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+|  2 | sheetal   | adagale  | pimpri  | nanded | maharashtra |  411025 | 7845213659  | sheetal@gmail.com | book2            | friends          |
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+1 row in set (0.00 sec)
+
 
 
