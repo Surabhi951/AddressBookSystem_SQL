@@ -1,0 +1,23 @@
+UC1-Create address book service database
+
+mysql> create database addressBook_Service_new;
+Query OK, 1 row affected (0.67 sec)
+
+mysql> show databases;
++-------------------------+
+| Database                |
++-------------------------+
+| addressbook_service     |
+| addressbook_service_new |
+| employee_payroll        |
+| information_schema      |
+| mysql                   |
+| payroll_service         |
+| payroll_service_new     |
+| performance_schema      |
+| sys                     |
++-------------------------+
+9 rows in set (0.00 sec)
+
+mysql> use addressBook_Service_new;
+Database changed
