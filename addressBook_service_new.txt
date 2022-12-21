@@ -161,7 +161,16 @@ mysql> select count(state) from addressbook where state = 'maharashtra';
 +--------------+
 1 row in set (0.00 sec)
 
+UC8-Retrieve entries sorted alphabetically by person's name for a given city
 
+mysql> select * from addressbook where city = 'pune' order by firstName;
++-----------+----------+------------+------+-------------+---------+-------------+------------------+
+| firstName | lastName | address    | city | state       | zipCode | phoneNumber | email            |
++-----------+----------+------------+------+-------------+---------+-------------+------------------+
+| sakshi    | bhagat   | kumbrepark | pune | maharashtra |  411025 | 9857412368  | sakshi@gmail.com |
+| surabhi   | bhagat   | kothrud    | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com  |
++-----------+----------+------------+------+-------------+---------+-------------+------------------+
+2 rows in set (0.17 sec)
 
 
 
