@@ -101,3 +101,14 @@ mysql> select * from addressbook;
 | sheetal   | adagale  | pimpri  | pune | maharashtra |  411025 | 7845213659  | sheetal@gmail.com |
 +-----------+----------+---------+------+-------------+---------+-------------+-------------------+
 2 rows in set (0.00 sec)
+
+UC6-Retrieve person belonging to a city or state from the address book
+
+mysql> select * from addressbook where city = 'pune' or state = 'maharashtra';
++-----------+----------+---------+------+-------------+---------+-------------+-------------------+
+| firstName | lastName | address | city | state       | zipCode | phoneNumber | email             |
++-----------+----------+---------+------+-------------+---------+-------------+-------------------+
+| surabhi   | bhagat   | kothrud | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com   |
+| sheetal   | adagale  | pimpri  | pune | maharashtra |  411025 | 7845213659  | sheetal@gmail.com |
++-----------+----------+---------+------+-------------+---------+-------------+-------------------+
+2 rows in set (0.00 sec)
