@@ -50,3 +50,24 @@ mysql> desc addressbook;
 | email       | varchar(20)  | NO   |     | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 8 rows in set (0.00 sec)
+
+UC3-Insert new contacts to address book
+
+mysql> insert into addressbook(firstName,lastName,address,city,state,zipCode,phoneNumber,email)values('surabhi', 'bhagat', 'kothrud', 'pune', 'maharashtra', 411026, 8957463215, 'sur12@gmail.com');
+Query OK, 1 row affected (0.28 sec)
+
+mysql> insert into addressbook(firstName,lastName,address,city,state,zipCode,phoneNumber,email)values('manoj','mahajan','warje','pune','maharashtra',411035,8541236598,'manu32@gmail.com');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into addressbook(firstName,lastName,address,city,state,zipCode,phoneNumber,email)values('sheetal','adagale','shivajinagar','pune','maharashtra',411025,7845213659,'sheetal@gmail.com');
+Query OK, 1 row affected (0.31 sec)
+
+mysql> select * from addressbook;
++-----------+----------+--------------+------+-------------+---------+-------------+-------------------+
+| firstName | lastName | address      | city | state       | zipCode | phoneNumber | email             |
++-----------+----------+--------------+------+-------------+---------+-------------+-------------------+
+| surabhi   | bhagat   | kothrud      | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com   |
+| manoj     | mahajan  | warje        | pune | maharashtra |  411035 | 8541236598  | manu32@gmail.com  |
+| sheetal   | adagale  | shivajinagar | pune | maharashtra |  411025 | 7845213659  | sheetal@gmail.com |
++-----------+----------+--------------+------+-------------+---------+-------------+-------------------+
+3 rows in set (0.03 sec)
