@@ -297,5 +297,79 @@ mysql> select * from friends;
 +----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
 1 row in set (0.00 sec)
 
+UC13-Retrieve queries done especially in UC6,UC7,UC8 and UC10 are working with new table structure
 
+mysql> select * from family where city = 'pune' or state = 'maharashtra';
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+| id | firstName | lastName | address    | city | state       | zipCode | phonenumber | email            | addressbook_name | addressbook_type |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+|  1 | surabhi   | bhagat   | kothrud    | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com  | book1            | family           |
+|  3 | sakshi    | bhagat   | kumbrepark | pune | maharashtra |  411025 | 9857412368  | sakshi@gmail.com | book1            | family           |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from friends where city = 'pune' or state = 'maharashtra';
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+| id | firstName | lastName | address | city   | state       | zipCode | phoneNumber | email             | addressbook_name | addressbook_type |
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+|  2 | sheetal   | adagale  | pimpri  | nanded | maharashtra |  411025 | 7845213659  | sheetal@gmail.com | book2            | friends          |
++----+-----------+----------+---------+--------+-------------+---------+-------------+-------------------+------------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(city) from family where city = 'pune';
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.04 sec)
+
+mysql> select count(city) from friends where city = 'pune';
++-------------+
+| count(city) |
++-------------+
+|           0 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(state) from family where state = 'maharashtra';
++--------------+
+| count(state) |
++--------------+
+|            2 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select count(state) from friends where state = 'maharashtra';
++--------------+
+| count(state) |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from family where city = 'pune' order by firstName;
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+| id | firstName | lastName | address    | city | state       | zipCode | phonenumber | email            | addressbook_name | addressbook_type |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+|  3 | sakshi    | bhagat   | kumbrepark | pune | maharashtra |  411025 | 9857412368  | sakshi@gmail.com | book1            | family           |
+|  1 | surabhi   | bhagat   | kothrud    | pune | maharashtra |  411026 | 8957463215  | sur12@gmail.com  | book1            | family           |
++----+-----------+----------+------------+------+-------------+---------+-------------+------------------+------------------+------------------+
+2 rows in set (0.02 sec)
+
+mysql> select addressbook_type, count(*) from family group by addressbook_type;
++------------------+----------+
+| addressbook_type | count(*) |
++------------------+----------+
+| family           |        2 |
++------------------+----------+
+1 row in set (0.06 sec)
+
+mysql> select addressbook_type, count(*) from friends group by addressbook_type;
++------------------+----------+
+| addressbook_type | count(*) |
++------------------+----------+
+| friends          |        1 |
++------------------+----------+
+1 row in set (0.00 sec)
 
